@@ -1,0 +1,32 @@
+﻿@page "/addserver"
+
+<h3>Add Server</h3>
+<br />
+<EditForm Model="server" FormName="formServer" OnValidSubmit="Submit">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <ValidationSummary></ValidationSummary>
+
+    <InputNumber @bind-Value="server.Id" hidden />
+    <div class="mb-3">
+        <label for="@server.Name" class="col-form-label">Name</label>
+        <InputText @bind-Value="server.Name" class="form-control"></InputText>
+        <ValidationMessage For="() => server.Name"></ValidationMessage>
+    </div>
+    <div class="mb-3">
+        <label for="@server.Name" class="col-form-label">City</label>
+        <InputText @bind-Value="server.City" class="form-control"></InputText>
+        <ValidationMessage For="() => server.City"></ValidationMessage>
+    </div>
+    <div class="mb-3">
+        <label for="@server.IsOnline" class="form-label">Online</label>
+        <InputCheckbox @bind-Value="server.IsOnline" />
+    </div>
+
+    <button class="btn btn-primary" type="submit">Update</button>
+    &nbsp;
+    <a href="/servers" class="btn btn-primary">Close</a>
+</EditForm>
+
+@code {
+    private Server server { get; set; } = new Server() { IsOnline = false };
+}
