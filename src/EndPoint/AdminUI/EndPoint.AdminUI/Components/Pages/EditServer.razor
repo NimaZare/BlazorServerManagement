@@ -1,0 +1,49 @@
+﻿@page "/servers/{id:int}"
+
+<h3>Edit Server</h3>
+<br />
+<br />
+@if(server is not null)
+{
+    <EditForm Model="server" FormName="formServer" OnSubmit="Submit">
+        <InputNumber @bind-Value="server.Id" hidden />
+        <div class="mb-3">
+            <label for="@server.Name" class="form-label">Name</label>
+            <InputText @bind-Value="server.Name" />
+        </div>
+        <div class="mb-3">
+            <label for="@server.Name" class="form-label">City</label>
+            <InputText @bind-Value="server.City" />
+        </div>
+        <div class="mb-3">
+            <label for="@server.IsOnline" class="form-label">Online</label>
+            <InputCheckbox @bind-Value="server.IsOnline" />
+        </div>
+        
+        <button class="btn btn-primary" type="submit">Update</button>
+        &nbsp;
+        <a href="/servers" class="btn btn-primary">Close</a>
+    </EditForm>
+}
+
+@code {
+
+    [Parameter]
+    public int Id { get; set; }
+
+    [SupplyParameterFromForm(FormName = "formServer")]
+    private Server? server { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        server = ServersRepository.GetServerById(this.Id);
+    }
+
+    private void Submit()
+    {
+        if (server is not null)
+        {
+            ServersRepository.UpdateServer(server.Id, server);
+        }
+    }
+}

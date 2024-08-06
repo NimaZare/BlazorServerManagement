@@ -15,25 +15,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{763132E2-C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdminUI", "AdminUI", "{550857EB-AEC3-49BA-8C77-D6166C98A4B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EndPoint.AdminUI", "src\EndPoint\AdminUI\EndPoint.AdminUI\EndPoint.AdminUI.csproj", "{84EFC9AC-44BD-4177-A321-EC40554F692E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EndPoint.AdminUI", "src\EndPoint\AdminUI\EndPoint.AdminUI\EndPoint.AdminUI.csproj", "{84EFC9AC-44BD-4177-A321-EC40554F692E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApp.AdminAPI", "src\API\MyApp.AdminAPI\MyApp.AdminAPI.csproj", "{7BA0A6EA-FF9B-4CF3-93D8-5BA6A2E28AAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyApp.AdminAPI", "src\API\MyApp.AdminAPI\MyApp.AdminAPI.csproj", "{7BA0A6EA-FF9B-4CF3-93D8-5BA6A2E28AAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApp.API", "src\API\MyApp.API\MyApp.API.csproj", "{88AB6338-96C5-4AD1-99BE-266C2A6D85D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyApp.API", "src\API\MyApp.API\MyApp.API.csproj", "{88AB6338-96C5-4AD1-99BE-266C2A6D85D5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{30ECD5C8-5103-4FA7-89F8-F5E28E14615C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{A2773BAD-64DF-4D07-96A4-13EC80906B47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApp.DataAccess", "src\Core\Application\MyApp.DataAccess\MyApp.DataAccess.csproj", "{324892BF-7B10-4327-92C5-CE05B92EDA22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyApp.DataAccess", "src\Core\Application\MyApp.DataAccess\MyApp.DataAccess.csproj", "{324892BF-7B10-4327-92C5-CE05B92EDA22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApp.Domain", "src\Core\Application\MyApp.Domain\MyApp.Domain.csproj", "{19A9C632-1F12-4713-9A82-6E749AB4F433}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyApp.Domain", "src\Core\Application\MyApp.Domain\MyApp.Domain.csproj", "{19A9C632-1F12-4713-9A82-6E749AB4F433}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApp.Infrastructure", "src\Core\Application\MyApp.Infrastructure\MyApp.Infrastructure.csproj", "{6BB04FEB-B4CA-481D-8EB5-AD2F05D7BE0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyApp.Infrastructure", "src\Core\Application\MyApp.Infrastructure\MyApp.Infrastructure.csproj", "{6BB04FEB-B4CA-481D-8EB5-AD2F05D7BE0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Domain", "src\Core\Common\Shared.Domain\Shared.Domain.csproj", "{C8CE32FB-51E2-46DE-89A8-ED87691412B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Domain", "src\Core\Common\Shared.Domain\Shared.Domain.csproj", "{C8CE32FB-51E2-46DE-89A8-ED87691412B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Common", "src\Core\Common\Shared.Common\Shared.Common.csproj", "{CFA20437-153F-48CC-8D26-D6B84EB6B29F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Common", "src\Core\Common\Shared.Common\Shared.Common.csproj", "{CFA20437-153F-48CC-8D26-D6B84EB6B29F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
