@@ -1,0 +1,11 @@
+﻿@page "/servers/add"
+
+<h3>Add Server</h3>
+<br />
+
+
+@code {
+
+    [SupplyParameterFromForm]
+    private Server server { get; set; } = new Server() { IsOnline = false };
+}
