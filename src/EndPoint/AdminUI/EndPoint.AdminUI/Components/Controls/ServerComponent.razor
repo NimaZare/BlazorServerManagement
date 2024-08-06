@@ -1,6 +1,7 @@
 ﻿<h3> @server.Name is in @server.City </h3>
 
-<div data-name="@server.Name" data-status="Server is @(server.IsOnline ? "Online" : "Offline")"
+<div data-name="@server.Name"
+     status="Server is @(server.IsOnline ? "Online" : "Offline")"
      style="color:@(server.IsOnline ? "green" : "red")">
     @server.Name is in @server.City that is @(server.IsOnline ? "Online" : "Offline")
 </div>
