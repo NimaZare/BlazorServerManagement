@@ -1,4 +1,4 @@
-﻿namespace MyApp.Domain.Entities;
+﻿namespace EndPoint.AdminUI.Entities;
 
 public class Server
 {

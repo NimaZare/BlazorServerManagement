@@ -1,5 +1,10 @@
-﻿<h3>@status at @DateTime.Now</h3>
+﻿<h3> @server.Name is in @server.City </h3>
+
+<div data-name="@server.Name" data-status="Server is @(server.IsOnline ? "Online" : "Offline")"
+     style="color:@(server.IsOnline ? "green" : "red")">
+    @server.Name is in @server.City that is @(server.IsOnline ? "Online" : "Offline")
+</div>
 
 @code {
-    private string status = "Server is Offline.";
+    private Server server = new() { Name = "Server 1", City = "Toronto" };
 }
