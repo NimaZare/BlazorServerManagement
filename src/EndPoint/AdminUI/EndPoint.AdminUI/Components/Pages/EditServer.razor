@@ -5,15 +5,20 @@
 <br />
 @if(server is not null)
 {
-    <EditForm Model="server" FormName="formServer" OnSubmit="Submit">
+    <EditForm Model="server" FormName="formServer" OnValidSubmit="Submit">
+        <DataAnnotationsValidator></DataAnnotationsValidator>
+        <ValidationSummary></ValidationSummary>
+
         <InputNumber @bind-Value="server.Id" hidden />
         <div class="mb-3">
-            <label for="@server.Name" class="form-label">Name</label>
-            <InputText @bind-Value="server.Name" />
+            <label for="@server.Name" class="col-form-label">Name</label>
+            <InputText @bind-Value="server.Name" class="form-control"></InputText>
+            @* <ValidationMessage For="() => server.Name"></ValidationMessage> *@
         </div>
         <div class="mb-3">
-            <label for="@server.Name" class="form-label">City</label>
-            <InputText @bind-Value="server.City" />
+            <label for="@server.Name" class="col-form-label">City</label>
+            <InputText @bind-Value="server.City" class="form-control"></InputText>
+            @* <ValidationMessage For="() => server.City"></ValidationMessage> *@
         </div>
         <div class="mb-3">
             <label for="@server.IsOnline" class="form-label">Online</label>
@@ -36,12 +41,12 @@
 
     protected override void OnParametersSet()
     {
-        server = ServersRepository.GetServerById(this.Id);
+        server ??= ServersRepository.GetServerById(this.Id);
     }
 
     private void Submit()
     {
-        if (server is not null)
+        if (server != null)
         {
             ServersRepository.UpdateServer(server.Id, server);
         }
