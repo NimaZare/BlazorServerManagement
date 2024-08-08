@@ -22,7 +22,11 @@
     </div>
 </div>
 <br />
-@* <ServerComponent @rendermode="InteractiveServer" /> *@
+<div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Search Servers" @onchange="HandleServerFilter" />
+    &nbsp;
+    <button class="btn btn-outline-secondary" type="button" id="button-search" @onclick="HandleSearch">Search</button>
+</div>
 <br />
 <ul>
     @foreach (var server in servers)
@@ -39,6 +43,7 @@
     }
 </ul>
 
+<br />
 <p>
     <a href="/servers/add" class="btn btn-primary">Add Server</a>
 </p>
@@ -47,6 +52,7 @@
     private List<Server> servers = ServersRepository.GetServersByCity("Toronto");
     private List<string> cities = CitiesRepository.GetCities();
     private string selectedCity = "Toronto";
+    private string serverFilter = "";
 
     private void DeleteServer(int serverId)
     {
@@ -61,5 +67,16 @@
     {
         this.selectedCity = cityName;
         this.servers = ServersRepository.GetServersByCity(cityName);
+    }
+
+    private void HandleServerFilter(ChangeEventArgs args)
+    {
+        this.serverFilter = args.Value?.ToString() ?? string.Empty;
+    }
+
+    private void HandleSearch()
+    {
+        this.servers = ServersRepository.SearchServers(serverFilter);
+        this.selectedCity = string.Empty;
     }
 }
