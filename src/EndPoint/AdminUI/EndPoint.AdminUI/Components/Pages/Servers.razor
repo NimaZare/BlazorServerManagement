@@ -35,10 +35,7 @@
             &nbsp;
             <a href="/servers/@server.Id" class="btn btn-link">Edit</a>
             &nbsp;
-            <EditForm Model="server" FormName="@($"delete-server-{server.Id}")"
-                      OnValidSubmit="@(() => { DeleteServer(server.Id); })">
-                <button type="submit" class="btn btn-danger">Delete</button>
-            </EditForm>
+            <button type="button" class="btn btn-danger" @onclick="@(() => { DeleteServer(server.Id); })">Delete</button>
         </li>
     }
 </ul>
@@ -57,7 +54,7 @@
         if (serverId > 0)
         {
             ServersRepository.DeleteServer(serverId);
-            NavigationManager.NavigateTo("/servers");
+            this.servers = ServersRepository.GetServersByCity(selectedCity);
         }
     }
 
