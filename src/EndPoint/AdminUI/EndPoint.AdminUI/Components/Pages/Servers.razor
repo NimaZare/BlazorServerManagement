@@ -32,9 +32,21 @@
 </div>
 <br />
 <ul>
-    @foreach (var server in servers)
+    @* @foreach (var server in servers)
     {
-        <li class="pb-1">
+    <li class="pb-1" @key="server.Id">
+    @server.Name in @server.City is
+    <span style="color:@(server.IsOnline ? "green" : "red")">
+    @(server.IsOnline ? "Online" : "Offline")
+    </span>
+    &nbsp;
+    <a href="/servers/@server.Id" class="btn btn-link border-primary"><i class="bi bi-pencil-fill"></i></a>
+    <button type="button" class="btn btn-outline-danger" @onclick="@(() => { DeleteServer(server.Id); })"><i class="bi bi-trash3-fill"></i></button>
+    </li>
+    } *@
+
+    <Virtualize Items="this.servers" Context="server">
+        <li class="pb-1" @key="server.Id">
             @server.Name in @server.City is
             <span style="color:@(server.IsOnline ? "green" : "red")">
                 @(server.IsOnline ? "Online" : "Offline")
@@ -43,12 +55,22 @@
             <a href="/servers/@server.Id" class="btn btn-link border-primary"><i class="bi bi-pencil-fill"></i></a>
             <button type="button" class="btn btn-outline-danger" @onclick="@(() => { DeleteServer(server.Id); })"><i class="bi bi-trash3-fill"></i></button>
         </li>
-    }
+    </Virtualize>
 </ul>
 
 <br />
 <p>
     <a href="/servers/add" class="btn btn-primary">Add Server</a>
+</p>
+<br />
+<p>
+    <button class="btn btn-secondary"
+            @onclick="@(() =>
+            {
+                this.servers.Insert(0, new Server { Name = "Server A", City = "Toronto"});
+            })">
+        Add Server 2
+    </button>
 </p>
 
 @code {
@@ -80,7 +102,15 @@
     private void SelectServerCity(string cityName)
     {
         this.selectedCity = cityName;
-        this.servers = ServersRepository.GetServersByCity(cityName);
+        this.servers = ServersRepository.GetServersByCity(this.selectedCity);
+
+        if (cityName == "Halifax")
+        {
+            for (int i = 16; i < 2000; i++)
+            {
+                this.servers.Add(new Server { Id = i, Name = $"Server {i}", City = "Halifax" });
+            }
+        }
     }
 
     // private void HandleServerFilter(ChangeEventArgs args)
