@@ -6,9 +6,9 @@
 <h2>Servers</h2>
 <br />
 <br />
-<CityListComponent SelectCityCallback="HandleCitySelection" />
+<CityListComponent @ref="cityListComponent" SelectCityCallback="HandleCitySelection" />
 <br />
-<SearchBarComponent SearchFilterCallBack="HandleServerSearch" />
+<SearchBarComponent @ref="searchBarComponent" SearchFilterCallBack="HandleServerSearch" />
 <br />
 <ServerListComponent @rendermode="InteractiveServer" CityName="@this.selectedCity" SearchFilter="@this.searchFilter" />
 <br />
@@ -20,15 +20,19 @@
 
     private string selectedCity = "Toronto";
     private string searchFilter = "";
+    private CityListComponent? cityListComponent;
+    private SearchBarComponent? searchBarComponent;
 
     private void HandleCitySelection(string cityName)
     {
         this.selectedCity = cityName;
         this.searchFilter = string.Empty;
+        searchBarComponent?.ClearFilter();
     }
 
     private void HandleServerSearch(string searchFilter)
     {
         this.searchFilter = searchFilter;
+        cityListComponent?.ClearSelection();
     }
 }

@@ -12,6 +12,11 @@
     [Parameter]
     public EventCallback<string> SearchFilterCallBack { get; set; }
 
+    public void ClearFilter()
+    {
+        this.searchFilter = string.Empty;
+    }
+
     private string searchFilter = "";
 
     private void HandleSearch()
