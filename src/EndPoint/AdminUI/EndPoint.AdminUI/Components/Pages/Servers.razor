@@ -8,15 +8,9 @@
 <br />
 <CityListComponent SelectCityCallback="HandleCitySelection" />
 <br />
-<div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="Search Servers"
-           @bind-value="serverFilter"
-           @bind-value:event="oninput" />
-    &nbsp;
-    <button class="btn btn-outline-secondary" type="button" id="button-search" @onclick="HandleSearch">Search</button>
-</div>
+<SearchBarComponent SearchFilterCallBack="HandleServerSearch" />
 <br />
-<ServerListComponent @rendermode="InteractiveServer" CityName="@this.selectedCity" />
+<ServerListComponent @rendermode="InteractiveServer" CityName="@this.selectedCity" SearchFilter="@this.searchFilter" />
 <br />
 <p>
     <a href="/servers/add" class="btn btn-primary">Add Server</a>
@@ -25,32 +19,16 @@
 @code {
 
     private string selectedCity = "Toronto";
-    private string _serverFilter = "";
-    private string serverFilter
-    {
-        get => _serverFilter;
-        set
-        {
-            _serverFilter = value;
-            // can do whatever you want
-            //this.servers = ServersRepository.SearchServers(serverFilter);
-            //this.selectedCity = string.Empty;
-        }
-    }
-
-    // private void HandleServerFilter(ChangeEventArgs args)
-    // {
-    //     this.serverFilter = args.Value?.ToString() ?? string.Empty;
-    // }
-
-    private void HandleSearch()
-    {
-        //this.servers = ServersRepository.SearchServers(serverFilter);
-        //this.selectedCity = string.Empty;
-    }
+    private string searchFilter = "";
 
     private void HandleCitySelection(string cityName)
     {
         this.selectedCity = cityName;
+        this.searchFilter = string.Empty;
+    }
+
+    private void HandleServerSearch(string searchFilter)
+    {
+        this.searchFilter = searchFilter;
     }
 }
