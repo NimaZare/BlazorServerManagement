@@ -6,24 +6,9 @@
 <h2>Servers</h2>
 <br />
 <br />
-<div class="container-fluid text-center">
-    <div class="row w-70">
-        @foreach (var city in cities)
-        {
-            <div class="col">
-                <div class="card @(selectedCity.Equals(city, StringComparison.OrdinalIgnoreCase)? "border-primary":"")">
-                    <img src="@($"/images/{city}.png")" class="card-img-top" alt="img" />
-                    <div class="card-body">
-                        <button class="btn btn-primary" @onclick="@(() => { SelectServerCity(city); })">@city</button>
-                    </div>
-                </div>
-            </div>
-        }
-    </div>
-</div>
+<CityListComponent SelectCityCallback="HandleCitySelection" />
 <br />
 <div class="input-group mb-3">
-    @* <input type="text" class="form-control" placeholder="Search Servers" @onchange="HandleServerFilter" /> *@
     <input type="text" class="form-control" placeholder="Search Servers"
            @bind-value="serverFilter"
            @bind-value:event="oninput" />
@@ -31,9 +16,7 @@
     <button class="btn btn-outline-secondary" type="button" id="button-search" @onclick="HandleSearch">Search</button>
 </div>
 <br />
-<ServerListComponent
-    @rendermode="InteractiveServer"
-    CityName="@this.selectedCity" />
+<ServerListComponent @rendermode="InteractiveServer" CityName="@this.selectedCity" />
 <br />
 <p>
     <a href="/servers/add" class="btn btn-primary">Add Server</a>
@@ -41,7 +24,6 @@
 
 @code {
 
-    private List<string> cities = CitiesRepository.GetCities();
     private string selectedCity = "Toronto";
     private string _serverFilter = "";
     private string serverFilter
@@ -52,16 +34,8 @@
             _serverFilter = value;
             // can do whatever you want
             //this.servers = ServersRepository.SearchServers(serverFilter);
-            this.selectedCity = string.Empty;
+            //this.selectedCity = string.Empty;
         }
-    }
-
-    
-
-    private void SelectServerCity(string cityName)
-    {
-        this.selectedCity = cityName;
-        //this.servers = ServersRepository.GetServersByCity(this.selectedCity);
     }
 
     // private void HandleServerFilter(ChangeEventArgs args)
@@ -72,6 +46,11 @@
     private void HandleSearch()
     {
         //this.servers = ServersRepository.SearchServers(serverFilter);
-        this.selectedCity = string.Empty;
+        //this.selectedCity = string.Empty;
+    }
+
+    private void HandleCitySelection(string cityName)
+    {
+        this.selectedCity = cityName;
     }
 }

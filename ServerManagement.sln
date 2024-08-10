@@ -37,7 +37,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Common", "src\Core\C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ToDo", "ToDo", "{05173C0E-7173-43B1-A424-4B4647616A77}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EndPoint.ToDoUI", "src\EndPoint\ToDo\EndPoint.ToDoUI\EndPoint.ToDoUI.csproj", "{B207F553-D2D4-4AC3-ADF0-577DB3D19317}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EndPoint.ToDoUI", "src\EndPoint\ToDo\EndPoint.ToDoUI\EndPoint.ToDoUI.csproj", "{B207F553-D2D4-4AC3-ADF0-577DB3D19317}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
