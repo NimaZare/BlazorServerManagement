@@ -8,6 +8,19 @@
             @(Server.IsOnline ? "Online" : "Offline")
         </span>
         &nbsp;
+        @if (Server.IsOnline)
+        {
+            <button type="button" class="btn btn-outline-danger" @onclick="@(() => { Server.IsOnline = false; })">
+                Turn OFF
+            </button>
+        }
+        else
+        {
+            <button type="button" class="btn btn-outline-success" @onclick="@(() => { Server.IsOnline = true; })">
+                Turn ON
+            </button>
+        }
+        &nbsp;
         <a href="/Servers/@Server.Id" class="btn btn-link border-primary"><i class="bi bi-pencil-fill"></i></a>
         <button type="button" class="btn btn-outline-danger" @onclick="@(() => { DeleteServer(Server.Id); })"><i class="bi bi-trash3-fill"></i></button>
     </li>
