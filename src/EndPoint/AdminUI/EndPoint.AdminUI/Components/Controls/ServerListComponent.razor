@@ -2,15 +2,7 @@
 {
     <ul>
         <Virtualize Items="this.servers" Context="server">
-            <li class="pb-1" @key="server.Id">
-                @server.Name in @server.City is
-                <span style="color:@(server.IsOnline ? "green" : "red")">
-                    @(server.IsOnline ? "Online" : "Offline")
-                </span>
-                &nbsp;
-                <a href="/servers/@server.Id" class="btn btn-link border-primary"><i class="bi bi-pencil-fill"></i></a>
-                <button type="button" class="btn btn-outline-danger" @onclick="@(() => { DeleteServer(server.Id); })"><i class="bi bi-trash3-fill"></i></button>
-            </li>
+            <ServerComponent Server="server" />
         </Virtualize>
     </ul>
 }
@@ -25,14 +17,5 @@
     protected override void OnParametersSet()
     {
         servers = ServersRepository.GetServersByCity(CityName??"Toronto");
-    }
-
-    private void DeleteServer(int serverId)
-    {
-        if (serverId > 0)
-        {
-            ServersRepository.DeleteServer(serverId);
-            this.servers = ServersRepository.GetServersByCity(CityName??"Toronto");
-        }
     }
 }

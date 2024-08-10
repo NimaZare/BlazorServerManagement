@@ -1,0 +1,63 @@
+﻿@if (server is not null)
+{
+    <div data-name="@server.Name"
+         data-status="Server is @(server.IsOnline ? "Online" : "Offline")"
+         style="color:@(server.IsOnline ? "green" : "red")">
+        @server.Name is in @server.City that is @(server.IsOnline ? "Online" : "Offline")
+        &nbsp;
+        <button type="button" class="btn btn-primary" @onclick="ChangeServerStatus">Turn On/Off</button>
+    </div>
+}
+
+@code {
+
+    private Server? server = new() { Name = "Server 1", City = "Toronto" };
+
+    private void ChangeServerStatus()
+    {
+        if (server is not null)
+        {
+            this.server.IsOnline = !this.server.IsOnline;
+        }
+    }
+}
+
+
+
+@* @if (server is not null)
+{
+    <EditForm Enhance="true" Model="server" FormName="serverComponentForm" OnSubmit="ChangeServerStatus">
+        <InputNumber @bind-Value="server.Id" hidden />
+        <InputText @bind-Value="server.Name" hidden />
+        <InputText @bind-Value="server.City" hidden />
+        <InputCheckbox @bind-Value="server.IsOnline" hidden />
+
+        <div data-name="@server.Name"
+             data-status="Server is @(server.IsOnline ? "Online" : "Offline")"
+             style="color:@(server.IsOnline ? "green" : "red")">
+            @server.Name is in @server.City that is @(server.IsOnline ? "Online" : "Offline")
+            &nbsp;
+            <button type="submit" class="btn btn-primary">Turn On/Off</button>
+        </div>
+    </EditForm>
+}
+
+@code {
+
+    [SupplyParameterFromForm(FormName = "serverComponentForm")]
+    private Server? server { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        server ??= new() { Name = "Server 1", City = "Toronto" };
+    }
+
+    private void ChangeServerStatus()
+    {
+        if (server is not null)
+        {
+            server.IsOnline = !server.IsOnline;
+        }
+    }
+}
+ *@

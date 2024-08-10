@@ -7,6 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Update="Components\Controls\ServerComponent.razor">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
     <Content Update="Components\Pages\Servers.razor">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
     </Content>
