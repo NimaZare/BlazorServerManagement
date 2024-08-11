@@ -1,6 +1,6 @@
 ﻿@if (this.servers is not null && servers.Count > 0)
 {
-    <ul>
+    <ul class="list-unstyled">
         <Virtualize Items="this.servers" Context="server">
             <ServerComponent Server="server" />
         </Virtualize>
