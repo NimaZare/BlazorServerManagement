@@ -2,40 +2,7 @@
 {
     @foreach (var item in Items)
     {
-        <li @key="item.Id">
-            <div class="row mb-2">
-                <div class="col-1" style="width:30px">
-                    <input type="checkbox"
-                           class="form-check-input"
-                           style="vertical-align:middle"
-                           checked="@item.IsCompleted"
-                           @bind-value="item.IsCompleted" />
-                </div>
-                <div class="col">
-                    @if (item.IsCompleted)
-                    {
-                        <input type="text"
-                               class="form-control border-0 text-decoration-line-through"
-                               style="vertical-align:middle"
-                               @bind-value="item.Name"
-                               disabled />
-                    }
-                    else
-                    {
-                        <input type="text"
-                               class="form-control border-0"
-                               style="vertical-align:middle"
-                               @bind-value="item.Name" />
-                    }
-                </div>
-                <div class="col">
-                    @if (item.IsCompleted)
-                    {
-                        <text>Completed at : @item.DateCompleted.ToLongDateString()</text>
-                    }
-                </div>
-            </div>
-        </li>
+        <ItemComponent Item="item" />
     }
 }
 
