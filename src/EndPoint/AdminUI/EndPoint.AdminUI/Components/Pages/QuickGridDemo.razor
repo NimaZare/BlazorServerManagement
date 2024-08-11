@@ -1,0 +1,71 @@
+﻿@page "/quickgrid"
+@using Microsoft.AspNetCore.Components.QuickGrid
+@inject NavigationManager NavigationManager
+@rendermode InteractiveServer
+
+<h3>Quick Grid Demo</h3>
+<br />
+
+@if (servers is not null)
+{
+    <QuickGrid Items="this.servers.AsQueryable()">
+        <PropertyColumn Property="s => s.Name" Sortable="true"></PropertyColumn>
+        <PropertyColumn Property="s => s.City" Sortable="true"></PropertyColumn>
+        <TemplateColumn Title="Status" Sortable="true">
+            @if (context.IsOnline)
+            {
+                <div style="color:green">
+                    ONLINE
+                </div>
+            }
+            else
+            {
+                <div style="color:red">
+                    OFFLINE
+                </div>
+            }
+        </TemplateColumn>
+        <TemplateColumn Title="Users">
+            @if (context.IsOnline)
+            {
+                <text>@(new Random().Next(1, 500))</text>
+            }
+            else
+            {
+                <text>N/A</text>
+            }
+        </TemplateColumn>
+        <TemplateColumn>
+            @if (context.IsOnline)
+            {
+                <button type="button" class="btn btn-outline-danger" @onclick="@(() => { context.IsOnline = false; })">
+                    Turn OFF
+                </button>
+            }
+            else
+            {
+                <button type="button" class="btn btn-outline-success" @onclick="@(() => { context.IsOnline = true; })">
+                    Turn ON
+                </button>
+            }
+            &ensp;
+            <a href="/servers/@context.Id" class="btn btn-link border-primary"><i class="bi bi-pencil-fill"></i></a>
+            <button type="button" class="btn btn-outline-danger" @onclick="@(() => { DeleteServer(context.Id); })"><i class="bi bi-trash3-fill"></i></button>
+            @* <ChildContent Context="server"> </ChildContent> *@
+        </TemplateColumn>
+    </QuickGrid>
+}
+
+@code {
+
+    private List<Server>? servers = ServersRepository.GetServers();
+
+    private void DeleteServer(int serverId)
+    {
+        if (serverId > 0)
+        {
+            ServersRepository.DeleteServer(serverId);
+            NavigationManager.NavigateTo("/quickgrid", true);
+        }
+    }
+}

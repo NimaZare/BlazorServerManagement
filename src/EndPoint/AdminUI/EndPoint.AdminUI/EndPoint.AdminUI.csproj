@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid" Version="8.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Update="Components\Controls\ServerComponent.razor">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
     </Content>

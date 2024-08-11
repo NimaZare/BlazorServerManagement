@@ -1,6 +1,6 @@
 ﻿@page "/servers/{id:int}"
-
 @inject NavigationManager NavigationManager
+@rendermode InteractiveServer
 
 <h3>Edit Server</h3>
 <br />
@@ -44,7 +44,7 @@
     [Parameter]
     public int Id { get; set; }
 
-    [SupplyParameterFromForm(FormName = "formServer")]
+    [SupplyParameterFromForm]
     private Server? server { get; set; }
 
     protected override void OnParametersSet()
@@ -59,6 +59,13 @@
             ServersRepository.UpdateServer(server.Id, server);
         }
 
-        NavigationManager.NavigateTo("/servers", true);
+        try
+        {
+            NavigationManager.NavigateTo("/servers", true);
+        }
+        catch (NavigationException ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
     }
 }
