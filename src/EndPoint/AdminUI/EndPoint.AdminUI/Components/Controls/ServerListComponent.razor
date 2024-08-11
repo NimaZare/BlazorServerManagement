@@ -1,11 +1,22 @@
 ﻿
-<ul class="list-unstyled">
+<table class="table table-striped">
     <RepeaterComponent Items="this.servers">
+        <Header>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>Status</th>
+                    <th>Users</th>
+                    <th></th>
+                </tr>
+            </thead>
+        </Header>
         <Row Context="server">
             <ServerComponent Server="server" />
         </Row>
     </RepeaterComponent>
-</ul>
+</table>
 
 @code {
 
