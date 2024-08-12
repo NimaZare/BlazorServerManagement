@@ -1,6 +1,9 @@
 ﻿@page "/servers/{id:int}"
 @inject NavigationManager NavigationManager
+@inject JSRuntime JSRuntime
 @rendermode InteractiveServer
+
+@* <NavigationLock OnBeforeInternalNavigation="OnBeforeInternalNavigation" ConfirmExternalNavigation="true" /> *@
 
 <h3>Edit Server</h3>
 <br />
@@ -68,4 +71,14 @@
             Console.WriteLine(ex.Message);
         }
     }
+
+    // private async Task OnBeforeInternalNavigation(LocationChangingContext context)
+    // {
+    //     var isConfirmed = await JSRuntime.InvokeAsync<bool>("confirm", "Are you sure you want to leave this page?");
+
+    //     if (isConfirmed is not true)
+    //     {
+    //         context.PreventNavigation();
+    //     }
+    // }
 }
